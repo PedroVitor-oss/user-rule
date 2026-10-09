@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Rules</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <main>
+        <header>
+            <h2>
+                <%= title %>
+            </h2>
+        </header>
+        <section>
+            <% if (typeof centerButton !=="undefined" && centerButton) { %> <a class="center-button"
+                    href="<%= centerButton.route %>">
+                    <%= centerButton.name %>
+                </a>
+                <% } %>
+                    <% if (typeof form !=="undefined" && form) { %>
+                        <form action="<%= form.action %>" method="<%= form.method %>">
+                            <h2 style="text-align: center;"><%= form.title || 'Form' %></h2>
+                            <% form.fields.forEach(field=> { %>
+                                <div class="form-group">
+                                    <label for="<%= field.name %>">
+                                        <%= field.label %>
+                                    </label>
+                                    <input type="<%= field.type %>" name="<%= field.name %>" id="<%= field.name %>"
+                                        required>
+                                </div>
+                                <% }); %>
+                                    <button type="submit">
+                                        <%= form.submitText %>
+                                    </button>
+                        </form>
+                        <% } %>
+        </section>
+    </main>
+</body>
+
+</html>
