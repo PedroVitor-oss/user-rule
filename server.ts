@@ -2,6 +2,7 @@ import express from 'express';
 import ejs from 'ejs';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
+import jwt from "jsonwebtoken"
 
 import { Usuarios } from './Usuarios.ts';
 dotenv.config();
@@ -10,6 +11,7 @@ const app = express();
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //public router
@@ -45,11 +47,24 @@ app.get("/login",(req,res)=>{
 
 app.post("/login",(req: express.Request, res: express.Response)=>{
     // Handle login logic here
+    console.log("req.body",req.body);
     const {username, password} = req.body;
-
     const user = Usuarios.find(u => u.name === username && u.senhaHash === password);
     if(user){
-        res.send('Login form submitted');
+        const token  = jwt.sign({
+            id: user.id,
+            perfil: user.perfil
+        },
+        process.env.JWT_SECRET,
+        {
+            expiresIn: '1h'
+        })
+        res.json({
+            status:"success",
+            token:token, // token jwt
+        });
+        console.log("login tudo certo");
+        return;
     }
 
     // console.log("req.body", req.body);
@@ -59,7 +74,10 @@ app.post("/login",(req: express.Request, res: express.Response)=>{
         message: 'Invalid username or password'
     }
 
-    res.render('layout', FormularioPageDataAlert);
+    res.json({
+            status:"erro",
+            
+        });
 });
 
 
