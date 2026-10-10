@@ -10,7 +10,7 @@
     // console.log("token",token);
     // return;
 
-    const response = await fetch("/deashboard/me",{
+    const response = await fetch("/api/deashboard/me",{
         method:"post",
         headers:{
             "Content-Type": "application/json",
@@ -22,7 +22,9 @@
     
     if(!response.ok || data.status !== "success"){
         alert("erro ao buscar dados ");
+        window.location.href = "/";
         return;
+
     }
     const user = data.user;
 

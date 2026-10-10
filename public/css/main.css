@@ -157,3 +157,23 @@ align-items: center;
         text-align: center;
     }
 }
+
+div.cont-routes{
+    display:flex;
+    flex-direction: row;
+    gap:20px;
+    justify-content: center;
+
+    & a {
+        text-decoration: none;
+        padding: 10px;
+        width:150px;
+        aspect-ratio: 1/1;
+        border-radius: 20px;
+        border:1px solid #555;
+        color: #555;
+        & p {
+            color: #555;
+        };
+    }
+}

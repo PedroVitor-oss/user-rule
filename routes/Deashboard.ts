@@ -9,8 +9,21 @@ router.get('/deashboard',(req: express.Request, res: express.Response)=>{
         title: "private route - deashboard"
     })
 })
+router.get("/deashboard/me",autenticar, (req,res)=>{
+    console.log("acess /me")
+    // console.log("req.headers",req.headers);
 
-router.post("/deashboard/me",autenticar, (req,res)=>{
+    const id_user = req.user.id;
+
+    const user = Usuarios.find(u=> u.id == id_user);
+
+      res.render("deashboard",{
+        title: "private route - deashboard about me ",
+        
+    })
+})
+
+router.post("/api/deashboard/me",autenticar, (req,res)=>{
     console.log("acess /me")
     // console.log("req.headers",req.headers);
 
