@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import jwt from "jsonwebtoken"
 import {autenticar} from "./middleware/autenticar.ts"
 import LoginRoute from './routes/Login.ts'
+import DeashboardRoute from './routes/Deashboard.ts'
 
 dotenv.config();
 
@@ -29,7 +30,7 @@ app.get("/",(req: express.Request, res: express.Response)=>{
 
 //routes
 app.use(LoginRoute)
-
+app.use(DeashboardRoute);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server is running on http://localhost:' + (process.env.PORT || 3000));

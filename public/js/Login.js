@@ -28,7 +28,7 @@ async function LoginPost(event) {
         localStorage.setItem("token", result.token);
 
         // Redireciona para a página inicial (ou dashboard)
-        window.location.href = "/";
+        window.location.href = "/deashboard";
     } catch (err) {
         console.error("Erro no login:", err);
         alert("Usuário ou senha inválidos");
