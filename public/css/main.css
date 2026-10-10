@@ -125,3 +125,11 @@ div.alert {
     80% { opacity: 1; }
     100% { opacity: 0; display:none; }
 }
+
+/* === FOOTER ==== */
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #aaa;
+}

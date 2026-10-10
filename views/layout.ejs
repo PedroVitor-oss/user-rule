@@ -9,6 +9,15 @@
 </head>
 
 <body>
+    <% if (typeof user !=="undefined" && user) { %>
+        <div class="cont-user">
+            <p><%= user.name %></p>
+            <div class="icon">
+                <p><%= user.name[0] %></p>
+            </div>
+
+        </div>
+    <% } %>
     <main>
         <header>
             <h2>
@@ -53,9 +62,12 @@
                                 <%= form.submitText %>
                             </button>
                 </form>
-            <% } %>""
+            <% } %>
         </section>
     </main>
+    <footer>
+        <p>2026 . user rules by Pedro Vitor</p>
+    </footer>
 </body>
 
 </html>
