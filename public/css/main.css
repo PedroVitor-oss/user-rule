@@ -26,8 +26,8 @@ main section{
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100%;
-
+    height:100%;   
+    flex-direction: column;
 }
 
 a.center-button
@@ -104,4 +104,24 @@ main section form button[type="submit"]:hover {
 
 main section form button[type="submit"]:active {
     transform: scale(0.98);
+}
+
+/*  ====== ALert ------- */
+div.alert { 
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    width:100px;
+    height:50px;
+    background-color: #f8d7da;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+    animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; display:none; }
 }
